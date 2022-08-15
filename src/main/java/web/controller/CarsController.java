@@ -13,9 +13,10 @@ import java.util.List;
 
 @Controller
 public class CarsController {
+    CarServiceImpl carsServiceImpl = new CarServiceImpl();
     @GetMapping(value = "/cars")
     public String outputCars(@RequestParam(defaultValue="5") Integer count, ModelMap model) {
-        CarServiceImpl carsServiceImpl = new CarServiceImpl();
+
         List<Car> listCars = carsServiceImpl.carList(count);
         model.addAttribute("carsAtt", listCars);
         return "cars";
